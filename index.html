@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full antialiased scroll-behavior-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bambucha Grill Burger - Menú Interactivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Tema Aéreo - Negro, Azul Royal, Blanco */
+        :root {
+            --color-primary: #0052CC;
+            --color-primary-dark: #003D99;
+            --color-secondary: #FFFFFF;
+            --color-background: #000000;
+            --color-surface: #1a1a1a;
+        }
+        
+        .aereo-gradient {
+            background: linear-gradient(135deg, #000000 0%, #0052CC 50%, #000000 100%);
+        }
+        
+        .aereo-accent {
+            border-top: 4px solid #0052CC;
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col bg-black text-white relative overflow-x-hidden">
+
+    <header class="sticky top-0 z-40 w-full">
+        <div class="relative overflow-hidden bg-black border-b-2 border-blue-600 shadow-lg shadow-blue-600/20">
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-blue-600/10"></div>
+            
+            <div class="relative mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 pb-3 pt-3 sm:px-6 lg:px-8">
+                <a href="#inicio" class="flex min-w-0 items-center gap-3">
+                    <div class="h-14 flex items-center gap-2">
+                        <div class="h-8 w-8 bg-blue-600"></div>
+                        <div class="h-8 w-6 bg-white"></div>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="truncate text-2xl font-black uppercase leading-none tracking-tight text-white sm:text-3xl">La Bambucha</p>
+                        <p class="mt-0.5 truncate text-xs font-black uppercase tracking-widest text-gray-400 sm:text-sm">Grill Burger</p>
+                    </div>
+                </a>
+                
+                <button type="button" onclick="toggleCart()" aria-label="Abrir carrito" class="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-lg shadow-blue-600/40 transition hover:bg-blue-700 active:scale-95 sm:h-14 sm:w-14">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 hidden h-6 min-w-6 items-center justify-center rounded-full bg-red-500 px-1.5 text-xs font-black text-white shadow-md">0</span>
+                </button>
+            </div>
+            
+            <div class="relative mx-auto max-w-7xl px-3 pb-2 sm:px-6 lg:px-8">
+                <nav class="mx-auto flex gap-2 rounded-lg bg-white/5 p-2 backdrop-blur-sm">
+                    <a href="#inicio" class="flex-1 flex h-10 items-center justify-center text-center text-xs font-black uppercase tracking-wider transition duration-200 hover:bg-blue-600/30 rounded-md text-white sm:text-sm">INICIO</a>
+                    <a href="#menu" class="flex-1 flex h-10 items-center justify-center text-center text-xs font-black uppercase tracking-wider transition duration-200 hover:bg-blue-600/30 rounded-md text-white sm:text-sm">MENÚ</a>
+                    <a href="https://wa.me/584141427822" target="_blank" class="flex-1 flex h-10 items-center justify-center text-center text-xs font-black uppercase tracking-wider transition duration-200 hover:bg-blue-600/30 rounded-md text-green-400 sm:text-sm">WHATSAPP</a>
+                    <a href="https://www.instagram.com/la_bambucha_burguer/" target="_blank" rel="noreferrer" class="flex-1 flex h-10 items-center justify-center text-center text-xs font-black uppercase tracking-wider transition duration-200 hover:bg-blue-600/30 rounded-md text-pink-400 sm:text-sm">INSTAGRAM</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative overflow-hidden bg-black px-4 pb-16 pt-10 sm:pt-16 md:py-24">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-transparent"></div>
+        <div class="absolute top-0 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/20 blur-3xl"></div>
+        
+        <div class="relative mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-[1fr_0.85fr]">
+            <div class="text-center md:text-left">
+                <div class="mb-6 inline-flex items-center gap-3 rounded-lg border border-blue-600/50 bg-blue-600/10 px-6 py-3 text-sm font-black uppercase tracking-wider text-white shadow-lg shadow-blue-600/20">
+                    <span class="h-3 w-3 rounded-full bg-blue-600"></span>
+                    Premium Grill Experience
+                </div>
+                
+                <h1 class="mx-auto max-w-3xl text-6xl font-black uppercase leading-tight tracking-tighter text-white drop-shadow-lg sm:text-7xl md:mx-0 md:text-8xl lg:text-9xl">
+                    La Bambucha
+                </h1>
+                <p class="mt-4 text-3xl font-black uppercase tracking-widest text-blue-400 sm:text-4xl">Grill Burger</p>
+                <p class="mx-auto mt-6 max-w-2xl text-base font-semibold leading-relaxed text-gray-300 sm:text-lg md:mx-0 md:text-xl">
+                    Hamburguesas premium, perritos, shawarmas y parrillas. Cada boca cuenta una historia de sabor.
+                </p>
+                
+                <div class="mt-10 grid gap-4 sm:grid-cols-2 md:max-w-2xl">
+                    <a href="#menu" class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-8 py-4 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-blue-600/50 transition hover:bg-blue-700 active:scale-95">
+                        Ver Menú
+                    </a>
+                    <a href="https://wa.me/584141427822" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-blue-600 bg-transparent px-8 py-4 text-sm font-black uppercase tracking-widest text-blue-400 transition hover:bg-blue-600/10">
+                        Ordenar Ahora
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative mx-auto hidden max-w-md items-center justify-center md:flex">
+                <div class="absolute h-96 w-96 rounded-full bg-blue-600/20 blur-3xl"></div>
+                <div class="relative w-72 h-72 rounded-full bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center text-white font-black text-5xl shadow-2xl border-4 border-blue-400">
+                    LB
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="relative overflow-hidden bg-black px-4 pb-20 pt-12 text-white sm:px-6 sm:pb-28 sm:pt-18 border-t border-blue-600/30">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-600/5 via-transparent to-transparent"></div>
+        
+        <div class="relative z-10 mx-auto max-w-7xl">
+            <div class="mb-8 max-w-3xl sm:mb-12">
+                <div class="mb-5 inline-flex gap-2 items-center">
+                    <div class="h-1 w-12 bg-blue-600"></div>
+                    <p class="text-xs font-black uppercase tracking-widest text-gray-400 sm:text-sm">NUESTRO MENÚ</p>
+                </div>
+                <h2 class="text-5xl font-black uppercase leading-tight tracking-tighter text-white drop-shadow-lg sm:text-6xl lg:text-7xl">
+                    Elige tu <span class="text-blue-400">Favorito</span>
+                </h2>
+            </div>
+
+            <div class="mb-10 rounded-lg border border-blue-600/30 bg-white/5 p-3 shadow-lg backdrop-blur-sm">
+                <div class="flex gap-3 overflow-x-auto no-scrollbar">
+                    <button class="shrink-0 rounded-lg border-2 border-blue-600 bg-blue-600 px-5 py-2 text-xs font-black uppercase transition text-white">Todos</button>
+                    <button class="shrink-0 rounded-lg border-2 border-blue-600/30 bg-transparent px-5 py-2 text-xs font-black uppercase transition hover:border-blue-600/60 text-gray-300">Combos</button>
+                    <button class="shrink-0 rounded-lg border-2 border-blue-600/30 bg-transparent px-5 py-2 text-xs font-black uppercase transition hover:border-blue-600/60 text-gray-300">Hamburguesas</button>
+                </div>
+            </div>
+
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                
+                <article class="group overflow-hidden rounded-lg border border-blue-600/30 bg-gradient-to-br from-white/5 to-white/[0.02] shadow-xl transition-all duration-300 hover:border-blue-600/60 hover:shadow-blue-600/20">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-br from-gray-900 to-black sm:h-72">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent flex items-center justify-center font-bold text-gray-600 text-xl">🍔 COMBO</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                        <span class="absolute left-4 top-4 rounded-lg border border-blue-400 bg-black/70 px-3 py-1 text-xs font-black uppercase tracking-widest text-blue-400">Premium</span>
+                        
+                        <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                            <div class="max-w-[58%]">
+                                <p class="text-xs font-black uppercase tracking-widest text-blue-400">La Bambucha</p>
+                                <h3 class="mt-1 text-2xl font-black uppercase leading-tight tracking-tight text-white sm:text-3xl">Combo Resuelve</h3>
+                            </div>
+                            <div class="rounded-lg bg-blue-600 px-4 py-3 text-right text-white shadow-lg">
+                                <p class="text-2xl font-black leading-none">$8.00</p>
+                                <div class="mt-2 border-t border-blue-400/30 pt-2">
+                                    <p class="text-xs font-black leading-none">Bs 320</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 sm:p-6">
+                        <p class="min-h-[56px] text-sm leading-relaxed text-gray-300 sm:text-base">
+                            5 perros normales con salchicha, cebolla, ensalada, papitas + 1 refresco de 1 litro.
+                        </p>
+                        <button type="button" onclick="addToCart(1, 'Combo Resuelve', 8.00)" class="mt-6 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-black uppercase transition active:scale-95 bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/40">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="group overflow-hidden rounded-lg border border-blue-600/30 bg-gradient-to-br from-white/5 to-white/[0.02] shadow-xl transition-all duration-300 hover:border-blue-600/60 hover:shadow-blue-600/20">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-br from-gray-900 to-black sm:h-72">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent flex items-center justify-center font-bold text-gray-600 text-xl">🍔 BURGER</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                        <span class="absolute left-4 top-4 rounded-lg border border-blue-400 bg-black/70 px-3 py-1 text-xs font-black uppercase tracking-widest text-blue-400">Premium</span>
+                        
+                        <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                            <div class="max-w-[58%]">
+                                <p class="text-xs font-black uppercase tracking-widest text-blue-400">La Bambucha</p>
+                                <h3 class="mt-1 text-2xl font-black uppercase leading-tight tracking-tight text-white sm:text-3xl">Súper Burger</h3>
+                            </div>
+                            <div class="rounded-lg bg-blue-600 px-4 py-3 text-right text-white shadow-lg">
+                                <p class="text-2xl font-black leading-none">$6.50</p>
+                                <div class="mt-2 border-t border-blue-400/30 pt-2">
+                                    <p class="text-xs font-black leading-none">Bs 260</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 sm:p-6">
+                        <p class="min-h-[56px] text-sm leading-relaxed text-gray-300 sm:text-base">
+                            Carne artesanal de 150g, pan especial, lechuga, tomate, tocineta crujiente y salsa secreta.
+                        </p>
+                        <button type="button" onclick="addToCart(2, 'Súper Burger', 6.50)" class="mt-6 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-black uppercase transition active:scale-95 bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/40">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto" class="bg-black text-gray-500 py-12 px-4 border-t-2 border-blue-600/30">
+        <div class="mx-auto max-w-7xl text-center text-xs">
+            <p>&copy; 2026 La Bambucha Grill Burger. Diseñado con excelencia.</p>
+        </div>
+    </footer>
+
+    <!-- CARRITO DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 transition-all duration-300 opacity-0 invisible">
+        <div onclick="toggleCart()" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+        
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-black border-l-2 border-blue-600 p-6 flex flex-col shadow-2xl shadow-blue-600/20 transform translate-x-full transition-transform duration-300 overflow-y-auto" id="cart-container">
+            
+            <div class="flex items-center justify-between border-b border-blue-600/30 pb-4 mb-4">
+                <div class="flex items-center gap-2">
+                    <div class="h-6 w-6 bg-blue-600"></div>
+                    <h3 class="text-xl font-black uppercase tracking-widest">Tu Pedido</h3>
+                </div>
+                <button onclick="toggleCart()" class="p-2 rounded-lg bg-blue-600/20 text-gray-400 hover:text-white transition font-bold">
+                    ✕
+                </button>
+            </div>
+
+            <div id="cart-items" class="flex-1 overflow-y-auto py-4 space-y-4 no-scrollbar">
+                <div id="cart-empty" class="h-full flex flex-col items-center justify-center text-center py-12 text-gray-500">
+                    <p class="text-lg font-bold">Tu carrito está vacío</p>
+                    <p class="text-xs mt-1">¡Agrega combos deliciosos!</p>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-600/30 pt-4 space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm font-black uppercase tracking-wider text-gray-400">Total USD:</span>
+                    <span id="total-usd" class="text-2xl font-black text-blue-400">$0.00</span>
+                </div>
+                <div class="flex justify-between items-center bg-blue-600/10 p-3 rounded-lg border border-blue-600/30">
+                    <span class="text-xs font-black uppercase text-gray-400">Equivalente Bs:</span>
+                    <span id="total-bs" class="text-base font-black text-white">Bs 0.00</span>
+                </div>
+                <button onclick="sendOrderWhatsApp()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg font-black uppercase tracking-wider shadow-lg shadow-blue-600/50 transition active:scale-95 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.925 0-3.712.693-5.072 1.99C5.560 9.503 4.822 11.25 4.822 13.207c0 2.141.883 4.15 2.487 5.652.823.76 1.882 1.38 3.027 1.701l.03.01h.014c.621 0 1.22-.099 1.779-.297 1.452-.497 2.745-1.387 3.658-2.605.45-.589.795-1.265 1.01-1.99.211-.715.322-1.48.322-2.252 0-1.956-.744-3.703-2.103-5.062-1.36-1.36-3.166-2.108-5.072-2.108"/>
+                    </svg>
+                    Enviar Pedido
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const TASA_CAMBIO = 40.00; 
+        let cart = [];
+        let cartOpen = false;
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const container = document.getElementById('cart-container');
+            
+            cartOpen = !cartOpen;
+
+            if(cartOpen) {
+                drawer.classList.remove('opacity-0', 'invisible');
+                container.classList.remove('translate-x-full');
+            } else {
+                drawer.classList.add('opacity-0', 'invisible');
+                container.classList.add('translate-x-full');
+            }
+        }
+
+        function addToCart(id, name, price) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if(existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price, quantity: 1, note: '' });
+            }
+            
+            updateCartUI();
+            
+            const badge = document.getElementById('cart-badge');
+            badge.classList.add('scale-125');
+            setTimeout(() => badge.classList.remove('scale-125'), 200);
+        }
+
+        function changeQuantity(id, delta) {
+            const item = cart.find(item => item.id === id);
+            if(!item) return;
+
+            item.quantity += delta;
+            if(item.quantity <= 0) {
+                cart = cart.filter(item => item.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateItemNote(id, noteText) {
+            const item = cart.find(item => item.id === id);
+            if(item) {
+                item.note = noteText;
+            }
+        }
+
+        function updateCartUI() {
+            const itemsContainer = document.getElementById('cart-items');
+            const badge = document.getElementById('cart-badge');
+            
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            if(totalItems > 0) {
+                badge.innerText = totalItems;
+                badge.classList.remove('hidden');
+                badge.classList.add('flex');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            itemsContainer.innerHTML = '';
+
+            if(cart.length === 0) {
+                itemsContainer.innerHTML = `
+                    <div id="cart-empty" class="h-full flex flex-col items-center justify-center text-center py-12 text-gray-500">
+                        <p class="text-lg font-bold">Tu carrito está vacío</p>
+                        <p class="text-xs mt-1">¡Agrega combos deliciosos!</p>
+                    </div>`;
+                document.getElementById('total-usd').innerText = "$0.00";
+                document.getElementById('total-bs').innerText = "Bs 0.00";
+                return;
+            }
+
+            let totalUSD = 0;
+            cart.forEach((item, index) => {
+                const subtotalUSD = item.price * item.quantity;
+                totalUSD += subtotalUSD;
+                const subtotalBs = subtotalUSD * TASA_CAMBIO;
+
+                const row = document.createElement('div');
+                row.className = "bg-white/5 border border-blue-600/30 rounded-lg p-4 space-y-3 hover:border-blue-600/60 transition";
+                
+                let noteHTML = '';
+                if(item.note.trim()) {
+                    noteHTML = `<div class="bg-blue-600/10 border border-blue-600/30 rounded-lg px-3 py-2 text-xs text-gray-300">
+                        <p class="font-black text-blue-400 mb-1">📝 NOTA:</p>
+                        <p class="whitespace-pre-wrap">${item.note}</p>
+                    </div>`;
+                }
+
+                row.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between gap-2 mb-3">
+                            <div class="flex-1">
+                                <h4 class="font-black text-sm uppercase text-white">${item.name}</h4>
+                                <p class="text-xs text-gray-500 mt-1">$${item.price.toFixed(2)} c/u</p>
+                                <p class="text-xs text-blue-400 font-bold mt-1">Subtotal: $${subtotalUSD.toFixed(2)}</p>
+                            </div>
+                            <button onclick="removeItem(${item.id})" class="text-red-500 hover:text-red-400 p-1 font-bold transition text-lg" aria-label="Eliminar elemento">🗑️</button>
+                        </div>
+
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2 bg-white/5 rounded-lg p-1 border border-blue-600/20">
+                                <button onclick="changeQuantity(${item.id}, -1)" class="w-7 h-7 flex items-center justify-center font-black text-base hover:bg-blue-600/20 rounded transition">−</button>
+                                <span class="w-6 text-center font-black text-xs text-white">${item.quantity}</span>
+                                <button onclick="changeQuantity(${item.id}, 1)" class="w-7 h-7 flex items-center justify-center font-black text-base hover:bg-blue-600/20 rounded transition">+</button>
+                            </div>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 accent-blue-600" onchange="document.getElementById('note-${index}').classList.toggle('hidden')">
+                                <span class="text-xs font-black text-blue-400">NOTA</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <textarea id="note-${index}" placeholder="Ejemplo: Sin picante, sin cebolla..." 
+                        class="hidden w-full px-3 py-2 rounded-lg bg-white/5 border border-blue-600/30 text-white text-xs placeholder-gray-600 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/50 resize-none" 
+                        rows="2" 
+                        onchange="updateItemNote(${item.id}, this.value)"
+                        onkeyup="updateItemNote(${item.id}, this.value)"></textarea>
+
+                    ${noteHTML}
+                `;
+                itemsContainer.appendChild(row);
+            });
+
+            const totalBs = totalUSD * TASA_CAMBIO;
+            document.getElementById('total-usd').innerText = `$${totalUSD.toFixed(2)}`;
+            document.getElementById('total-bs').innerText = `Bs ${totalBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        function sendOrderWhatsApp() {
+            if(cart.length === 0) {
+                alert("Agrega al menos un producto para generar tu pedido.");
+                return;
+            }
+
+            let totalUSD = 0;
+            let message = "🍔 *NUEVO PEDIDO - LA BAMBUCHA* 🍔\n\n";
+            message += "Hola, me gustaría ordenar lo siguiente:\n\n";
+
+            cart.forEach(item => {
+                const subtotalUSD = item.price * item.quantity;
+                totalUSD += subtotalUSD;
+                message += `• *${item.quantity}x* ${item.name} ($${item.price.toFixed(2)} c/u) → *$${subtotalUSD.toFixed(2)}*\n`;
+                
+                if(item.note.trim()) {
+                    message += `   📝 Nota: ${item.note}\n`;
+                }
+            });
+
+            const totalBs = totalUSD * TASA_CAMBIO;
+            message += `\n━━━━━━━━━━━━━━━━━━━━━━\n`;
+            message += `💵 *TOTAL USD:* $${totalUSD.toFixed(2)}\n`;
+            message += `🇻🇪 *TOTAL BS (Ref):* Bs ${totalBs.toLocaleString('es-VE', { minimumFractionDigits: 2 })}\n\n`;
+            message += "¡Quedo atento! 👨‍🍳✨";
+
+            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = "584141427822";
+            
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
