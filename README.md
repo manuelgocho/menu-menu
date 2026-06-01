@@ -1,4 +1,4 @@
-# 🍔 menu del gocho - Sistema de Menú Interactivo
+# 🍔 Menu del gocho - Sistema de Menú Interactivo
 
 ## 📋 Índice
 1. [Descripción General](#descripción-general)
