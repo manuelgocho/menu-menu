@@ -1,4 +1,4 @@
-# 🍔 La Bambucha Grill Burger - Sistema de Menú Interactivo
+# 🍔 menu del gocho - Sistema de Menú Interactivo
 
 ## 📋 Índice
 1. [Descripción General](#descripción-general)
